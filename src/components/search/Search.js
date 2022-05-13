@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Item from './Item';
 import axios from 'axios';
 
@@ -8,6 +8,8 @@ const INITIAL_STATE = {
 const Search = () => {
   const [values, setValues] = useState(INITIAL_STATE);
   const [responseData, setResponseData] = useState({});
+
+  const inputRef = useRef({});
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,6 +22,10 @@ const Search = () => {
       clearTimeout(timer);
     };
   }, [values.term]) 
+
+  useEffect(() => {
+    inputRef.current.focus();
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,6 +57,7 @@ const Search = () => {
       <form onSubmit={handleSubmit} className='search'>
         <input
           onChange={handleChange}
+          ref={inputRef}
           type='text'
           name='term'
           className='search-input'
