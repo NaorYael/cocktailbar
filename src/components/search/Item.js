@@ -6,7 +6,7 @@ const Item = ({item}) => {
                <div>{item.strDrink}</div>
                <div>
                    <img 
-                   style={{hight: '50px', width: '50px'}}
+                   style={{hight: '40px', width: '40px'}}
                    src={item.strDrinkThumb}
                    alt={item.strDrink}
                    />
